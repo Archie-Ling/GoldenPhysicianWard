@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../component/pear/css/pear.css" />
+    <!-- logo -->
+		<link rel="icon" href="admin/images/logo.ico" type="image/x-icon">
+		<!-- logo 兼容处理 -->
+		<link rel="shortcut icon" href="admin/images/logo.ico" type="image/x-icon">
+    <style type="text/css">
+        input.layui-input.layui-unselect {width:200px}
+    </style>
+</head>
+<body>
+<form class="layui-form" action="">
+    <div class="mainBox">
+        <div class="main-container">
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >科室</label>
+                <div class="layui-input-block">
+                <select name="departmentId" id="departmentId"  lay-filter="aihao">
+                    <option value=""></option>
+                </select>
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >医生</label>
+                <div class="layui-input-block">
+                <select name="doctorId" id="doctorId"  lay-filter="aihao">
+                    <option value=""></option>
+                </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >患者</label>
+                <div class="layui-input-block">
+                <select name="userId" id="userId"  lay-filter="aihao">
+                    <option value=""></option>
+                </select>
+                </div>
+            </div>
+
+
+            
+            <div class="layui-inline">
+                <label class="layui-form-label" >是否就医</label>
+                <div class="layui-input-block">
+                <select name="isComplete" id="isComplete"  lay-filter="aihao">
+                    <option value="是">是</option>
+                    <option value="否">否</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >病情分析</label>
+                <div class="layui-input-block">
+                <select name="diseaseId" id="diseaseId"  lay-filter="aihao">
+                    <option value=""></option>
+                </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="user-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<script src="../../../component/layui/layui.js"></script>
+<script src="../../../component/pear/pear.js"></script>
+
+<script>
+layui.use(['form','jquery','upload'],function(){
+    let form = layui.form;
+    let $ = layui.jquery;
+    let upload = layui.upload;
+
+    $.ajax({
+        url:'http://localhost:8080/department/list?limit=20&page=1',
+        type:'get',
+        success:function(result){
+
+            if(result.code==0){
+
+                //result.data 字典类型的所有数据
+                var data=result.data;
+                $.each(data,function (index,department) {
+                    
+
+                    //dictType 字典类型
+                    $("#departmentId").append("<option value='"+department.id+"'>"+department.name+"</option>")
+
+                })
+                //重新渲染下拉框
+                layui.form.render("select")
+
+            }else{
+                layer.msg(result.msg,{icon:2,time:1000});
+            }
+        }
+    })
+
+    $.ajax({
+        url:'http://localhost:8080/doctor/list?limit=20&page=1',
+        type:'get',
+        success:function(result){
+
+            if(result.code==0){
+
+                //result.data 字典类型的所有数据
+                var data=result.data;
+                $.each(data,function (index,doctor) {
+                    
+
+                    //dictType 字典类型
+                    $("#doctorId").append("<option value='"+doctor.id+"'>"+doctor.name+"</option>")
+
+                })
+                //重新渲染下拉框
+                layui.form.render("select")
+
+            }else{
+                layer.msg(result.msg,{icon:2,time:1000});
+            }
+        }
+    })
+
+    $.ajax({
+        url:'http://localhost:8080/user/list?limit=20&page=1',
+        type:'get',
+        success:function(result){
+
+            if(result.code==0){
+
+                //result.data 字典类型的所有数据
+                var data=result.data;
+                $.each(data,function (index,user) {
+                    
+
+                    //dictType 字典类型
+                    $("#userId").append("<option value='"+user.id+"'>"+user.name+"</option>")
+
+                })
+                //重新渲染下拉框
+                layui.form.render("select")
+
+            }else{
+                layer.msg(result.msg,{icon:2,time:1000});
+            }
+        }
+    })
+
+    $.ajax({
+        url:'http://localhost:8080/disease/list?limit=20&page=1',
+        type:'get',
+        success:function(result){
+
+            if(result.code==0){
+
+                //result.data 字典类型的所有数据
+                var data=result.data;
+                $.each(data,function (index,disease) {
+                    
+
+                    //dictType 字典类型
+                    $("#diseaseId").append("<option value='"+disease.id+"'>"+disease.userDisease+"</option>")
+
+                })
+                //重新渲染下拉框
+                layui.form.render("select")
+
+            }else{
+                layer.msg(result.msg,{icon:2,time:1000});
+            }
+        }
+    })
+
+
+    //普通图片上传
+    var uploadInst = upload.render({
+        elem: '#test1'
+        ,url: 'http://localhost:8081/admin/upload/image' //改成您自己的上传接口
+        ,field:"file"//上传文件的字段名
+        ,before: function(obj){
+            //预读本地文件示例，不支持ie8
+            obj.preview(function(index, file, result){
+                $('#demo1').attr('src', result); //图片链接（base64）
+            });
+        }
+        ,done: function(res){
+            //如果上传失败
+            if(res.code > 0){
+                return layer.msg('上传失败');
+            }
+            //上传成功 前端需要把图片存储在隐藏域中
+            $(".layui-form").append("<input  class='image' type='hidden' name='image' value='"+res.data+"'>");
+        }
+    });
+
+    form.on('submit(user-save)', function(data){
+
+
+        $.ajax({
+            url:'http://localhost:8080/appointment/add',
+            data:JSON.stringify(data.field),
+            dataType:'json',
+            contentType:'application/json',
+            type:'post',
+            success:function(result){
+                if(result.code==0){
+                    layer.msg(result.msg,{icon:1,time:1000},function(){
+                        parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                        window.parent.location.reload()
+                    });
+                }else{
+                    layer.msg(result.msg,{icon:2,time:1000});
+                }
+            }
+        })
+        return false;
+    });
+})
+</script>
+<script>
+</script>
+</body>
+</html>

@@ -1,0 +1,150 @@
+[
+	{
+		"id": 1,
+		"title": "首页",
+		"type": 0,
+		"icon": "layui-icon layui-icon-console",
+		"href": "",
+		"children": [{
+			"id": 10,
+			"title": "首页",
+			"icon": "layui-icon layui-icon-console",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/console/console1.html"
+		}]
+	},
+	{
+		"id": "system",
+		"title": "医生管理",
+		"icon": "layui-icon layui-icon-set-fill",
+		"type": 0,
+		"href": "",
+		"children": [
+			{
+				"id": 601,
+				"title": "医生",
+				"icon": "layui-icon layui-icon-face-smile",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "view/doctor/doctor.html"
+			},
+			{
+				"id": 602,
+				"title": "科室",
+				"icon": "layui-icon layui-icon-face-smile",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "view/department/department.html"
+			}
+		]
+	},
+	{
+		"id": "middle",
+		"title": "药品管理",
+		"icon": "layui-icon layui-icon-friends",
+		"type": 0,
+		"href": "",
+		"children": [{
+			"id": 203,
+			"title": "药品",
+			"icon": "layui-icon layui-icon-face-smile",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/medicine/medicine.html"
+		},{
+			"id": 199,
+			"title": "厂商",
+			"icon": "layui-icon layui-icon-face-smile",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/company/company.html"
+		}]
+	},
+	{
+		"id": "supply",
+		"title": "取药管理",
+		"icon": "layui-icon layui-icon-home",
+		"type": 0,
+		"href": "",
+		"children": [{
+			"id": 101,
+			"title": "取药",
+			"icon": "layui-icon layui-icon-face-smile",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/dispensing/dispensing.html"
+		},
+			{
+				"id": 102,
+				"title": "取药位置",
+				"icon": "layui-icon layui-icon-face-smile",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "view/colum/colum.html"
+			}
+		]
+	},
+	{
+		"id": "patient",
+		"title": "患者管理",
+		"icon": "layui-icon layui-icon-user",
+		"type": 0,
+		"href": "",
+		"children": [{
+			"id": 100,
+			"title": "患者",
+			"icon": "layui-icon layui-icon-face-smile",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/user/user.html"
+		},
+			{
+				"id": 200,
+				"title": "过敏",
+				"icon": "layui-icon layui-icon-face-smile",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "view/allergy/allergy.html"
+			}
+		]},
+	{
+		"id": "appointment",
+		"title": "预约管理",
+		"icon": "layui-icon layui-icon-user",
+		"type": 0,
+		"href": "",
+		"children": [{
+			"id": 103,
+			"title": "预约",
+			"icon": "layui-icon layui-icon-face-smile",
+			"type": 1,
+			"openType": "_iframe",
+			"href": "view/appointment/appointment.html"
+		},
+			{
+				"id": 201,
+				"title": "病情分析",
+				"icon": "layui-icon layui-icon-face-smile",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "view/disease/disease.html"
+			}
+		]},
+		{
+			"id": "manager",
+			"title": "管理者设置",
+			"icon": "layui-icon layui-icon-user",
+			"type": 0,
+			"href": "",
+			"children": [{
+				"id": 107,
+				"title": "设置",
+				"icon": "layui-icon layui-icon-face-smile",
+				"type": 1,
+				"openType": "_iframe",
+				"href": "view/manager/manager.html"
+			}
+			]}
+
+]

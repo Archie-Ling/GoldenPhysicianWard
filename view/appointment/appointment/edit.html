@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="../../../component/pear/css/pear.css" />
+    <!-- logo -->
+		<link rel="icon" href="admin/images/logo.ico" type="image/x-icon">
+		<!-- logo 兼容处理 -->
+		<link rel="shortcut icon" href="admin/images/logo.ico" type="image/x-icon">
+</head>
+<body>
+<form class="layui-form" lay-filter="layItem"-f action="">
+    <div class="mainBox">
+        <div class="main-container">
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >科室</label>
+                <div class="layui-input-block">
+                <select name="departmentId" id="departmentId"  lay-filter="aihao">
+                    <option value=""></option>
+                </select>
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >医生</label>
+                <div class="layui-input-block">
+                <select name="doctorId" id="doctorId"  lay-filter="aihao">
+                    <option value=""></option>
+                </select>
+                </div>
+            </div>
+
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >患者</label>
+                <div class="layui-input-block">
+                <select name="userId" id="userId"  lay-filter="aihao">
+                    <option value=""></option>
+                </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >是否就医</label>
+                <div class="layui-input-block">
+                <select name="isComplete" id="isComplete"  lay-filter="aihao">
+                    <option value="是">是</option>
+                    <option value="否">否</option>
+                </select>
+                </div>
+            </div>
+
+            <div class="layui-inline">
+                <label class="layui-form-label" >病情分析</label>
+                <div class="layui-input-block">
+                <select name="diseaseId" id="diseaseId"  lay-filter="aihao">
+                    <option value=""></option>
+                </select>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <div class="bottom">
+        <div class="button-container">
+            <button type="submit" class="layui-btn layui-btn-normal layui-btn-sm" lay-submit="" lay-filter="user-save">
+                <i class="layui-icon layui-icon-ok"></i>
+                提交
+            </button>
+            <button type="reset" class="layui-btn layui-btn-primary layui-btn-sm">
+                <i class="layui-icon layui-icon-refresh"></i>
+                重置
+            </button>
+        </div>
+    </div>
+</form>
+<script src="../../../component/layui/layui.js"></script>
+<script src="../../../component/pear/pear.js"></script>
+<script charset="utf-8" src="../../js/kindeditor/kindeditor-all-min.js"></script>
+<script type="text/javascript" src="../../../component/layui/base.js"></script>
+<script>
+
+    //获取url后面携带的参数
+    let id=getQueryVariable("id");
+
+layui.use(['form','jquery','upload',],function(){
+    let form = layui.form;
+    let $ = layui.jquery;
+    let upload = layui.upload;
+
+    $.ajax({
+        url:'http://localhost:8080/department/list?limit=20&page=1',
+        type:'get',
+        success:function(result){
+
+            if(result.code==0){
+
+                //result.data 字典类型的所有数据
+                var data=result.data;
+                $.each(data,function (index,department) {
+                    
+
+                    //dictType 字典类型
+                    $("#departmentId").append("<option value='"+department.id+"'>"+department.name+"</option>")
+
+                })
+                //重新渲染下拉框
+                layui.form.render("select")
+
+            }else{
+                layer.msg(result.msg,{icon:2,time:1000});
+            }
+        }
+    })
+
+    $.ajax({
+        url:'http://localhost:8080/doctor/list?limit=20&page=1',
+        type:'get',
+        success:function(result){
+
+            if(result.code==0){
+
+                //result.data 字典类型的所有数据
+                var data=result.data;
+                $.each(data,function (index,doctor) {
+                    
+
+                    //dictType 字典类型
+                    $("#doctorId").append("<option value='"+doctor.id+"'>"+doctor.name+"</option>")
+
+                })
+                //重新渲染下拉框
+                layui.form.render("select")
+
+            }else{
+                layer.msg(result.msg,{icon:2,time:1000});
+            }
+        }
+    })
+
+    $.ajax({
+        url:'http://localhost:8080/user/list?limit=20&page=1',
+        type:'get',
+        success:function(result){
+
+            if(result.code==0){
+
+                //result.data 字典类型的所有数据
+                var data=result.data;
+                $.each(data,function (index,user) {
+                    
+
+                    //dictType 字典类型
+                    $("#userId").append("<option value='"+user.id+"'>"+user.name+"</option>")
+
+                })
+                //重新渲染下拉框
+                layui.form.render("select")
+
+            }else{
+                layer.msg(result.msg,{icon:2,time:1000});
+            }
+        }
+    })
+
+    $.ajax({
+        url:'http://localhost:8080/disease/list?limit=20&page=1',
+        type:'get',
+        success:function(result){
+
+            if(result.code==0){
+
+                //result.data 字典类型的所有数据
+                var data=result.data;
+                $.each(data,function (index,disease) {
+                    
+
+                    //dictType 字典类型
+                    $("#diseaseId").append("<option value='"+disease.id+"'>"+disease.userDisease+"</option>")
+
+                })
+                //重新渲染下拉框
+                layui.form.render("select")
+
+            }else{
+                layer.msg(result.msg,{icon:2,time:1000});
+            }
+        }
+    })
+
+
+
+    //回显数据
+    $.ajax({
+        url: 'http://localhost:8080/appointment/find?id='+id,
+        method:"GET",
+        success:function(obj){
+
+            let data=obj.data;
+
+            //layui表单赋值回显
+            form.val("layItem", { //formTest 即 class="layui-form" 所在元素属性 lay-filter="" 对应的值
+                departmentId:data.departmentId,
+                doctorId:data.doctorId,
+                userId:data.userId,
+                isComplete:data.isComplete,
+                diseaseId:data.diseaseId
+            });
+
+            //回显图片
+            let image=obj.data.image;
+            if(image){
+                sessionStorage.setItem("image",image)
+                $('#demo1').attr("src",image)
+
+            }
+        }
+    });
+
+    form.on('submit(user-save)', function(data){
+
+
+
+        if( $(".image").length>0){
+           //如果修改了图片就获取隐藏域
+            data.field.image= $(".image").val();
+        }else{
+            //如果没有修改图片获取临时存储的图片地址
+            data.field.image=sessionStorage.getItem("image");
+            sessionStorage.removeItem("sessionStorage")
+        }
+        data.field.id=id;
+
+
+        console.info(data.field);
+
+        $.ajax({
+            url:'http://localhost:8080/appointment/update',
+            data:JSON.stringify(data.field),
+            dataType:'json',
+            contentType:'application/json',
+            type:'post',
+            //携带token
+            beforeSend: function (XMLHttpRequest) {
+                XMLHttpRequest.setRequestHeader("token", localStorage.getItem("token"));
+            },
+            success:function(result){
+                if(result.code==0){
+                    layer.msg(result.msg,{icon:1,time:1000},function(){
+                        parent.layer.close(parent.layer.getFrameIndex(window.name));//关闭当前页
+                        window.parent.location.reload()
+                    });
+                }else{
+                    layer.msg(result.msg,{icon:2,time:1000});
+                }
+            }
+        })
+        return false;
+    });
+})
+</script>
+<script>
+</script>
+</body>
+</html>

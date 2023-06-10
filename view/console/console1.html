@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>首页三</title>
+		<meta name="renderer" content="webkit">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+		<link rel="stylesheet" href="../../component/pear/css/pear.css" />
+		<link rel="stylesheet" href="../../admin/css/other/console1.css" />
+	</head>
+	<body class="pear-container">
+		<div>
+			<div class="layui-row layui-col-space10">
+				<div class="layui-col-xs6 layui-col-md3">
+					<div class="layui-card top-panel">
+						<div class="layui-card-header">今日访问量</div>
+						<div class="layui-card-body">
+							<div class="layui-row layui-col-space5">
+								<div class="layui-col-xs8 layui-col-md8 top-panel-number" style="color: #28333E;" id="value1">
+									0
+								</div>
+								<div class="layui-col-xs4 layui-col-md4 top-panel-tips">
+									<svg t="1686127506132" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="2797" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200">
+										<path d="M561.792 314.453333l-24.512-1.429333-5.717333-0.128c-30.421333 0-59.498667 10.325333-84.757334 29.269333l-5.44 4.266667c-21.504 17.557333-39.338667 41.066667-52.202666 68.373333l-2.176 4.8 2.346666-0.042666c-32.533333 0-62.784 14.122667-84.778666 38.656-21.952 24.469333-34.218667 57.557333-34.261334 93.376 1.152 34.261333 14.378667 65.408 36.778667 88.234666a117.717333 117.717333 0 0 0 84.544 35.733334h84.821333v-136.213334l-34.517333-0.021333 66.517333-71.616v207.850667h147.562667l5.973333-0.170667c30.314667-1.770667 57.813333-15.296 78.336-37.418667 22.186667-23.893333 34.794667-56.149333 34.794667-90.410666a133.162667 133.162667 0 0 0-29.653333-84.522667l-3.456-4.053333c-17.642667-19.626667-40.234667-32.746667-65.130667-37.482667L661.333333 418.986667l-99.584 107.904v-212.416z" fill="#63BA4D" p-id="2798"></path>
+										<path d="M593.792 319.317333v135.530667l91.157333-0.085333-11.072-31.637334-2.986666-7.701333a180.992 180.992 0 0 0-40.938667-61.141333l-36.16-34.986667z" fill="#63BA4D" p-id="2799"></path>
+										<path d="M522.666667 85.333333l369.493333 213.333334v426.666666L522.666667 938.666667 153.173333 725.333333V298.666667L522.666667 85.333333z m0 82.133334l-298.410667 172.245333v344.554667L522.666667 856.533333l298.389333-172.266666v-344.533334L522.666667 167.424z" fill="#63BA4D" p-id="2800"></path>
+										</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs6 layui-col-md3">
+					<div class="layui-card top-panel">
+						<div class="layui-card-header">今日预约人数</div>
+						<div class="layui-card-body">
+							<div class="layui-row layui-col-space5">
+								<div class="layui-col-xs8 layui-col-md8 top-panel-number" style="color: #28333E;" id="value2">
+									0
+								</div>
+								<div class="layui-col-xs4 layui-col-md4 top-panel-tips">
+									<svg t="1686127540951" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="5208" width="200" height="200" xmlns:xlink="http://www.w3.org/1999/xlink">
+										<path d="M912 411v451c0 27.614-22.386 50-50 50H162c-27.614 0-50-22.386-50-50V411h800zM369 690H255c-11.046 0-20 8.954-20 20s8.954 20 20 20h114c11.046 0 20-8.954 20-20s-8.954-20-20-20z m200 0H455c-11.046 0-20 8.954-20 20s8.954 20 20 20h114c11.046 0 20-8.954 20-20s-8.954-20-20-20z m200 0H655c-11.046 0-20 8.954-20 20s8.954 20 20 20h114c11.046 0 20-8.954 20-20s-8.954-20-20-20zM369 546H255c-11.046 0-20 8.954-20 20s8.954 20 20 20h114c11.046 0 20-8.954 20-20s-8.954-20-20-20z m200 0H455c-11.046 0-20 8.954-20 20s8.954 20 20 20h114c11.046 0 20-8.954 20-20s-8.954-20-20-20z m200 0H655c-11.046 0-20 8.954-20 20s8.954 20 20 20h114c11.046 0 20-8.954 20-20s-8.954-20-20-20zM162 181h700c27.614 0 50 22.386 50 50v140H112V231c0-27.614 22.386-50 50-50z" fill="#03AD82" p-id="5209"></path>
+										<path d="M329 112c11.046 0 20 8.954 20 20v100c0 11.046-8.954 20-20 20s-20-8.954-20-20V132c0-11.046 8.954-20 20-20z m367 0c11.046 0 20 8.954 20 20v100c0 11.046-8.954 20-20 20s-20-8.954-20-20V132c0-11.046 8.954-20 20-20z" fill="#7EDEC6" p-id="5210"></path>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs6 layui-col-md3">
+					<div class="layui-card top-panel">
+						<div class="layui-card-header">今日新到药品</div>
+						<div class="layui-card-body">
+							<div class="layui-row layui-col-space5">
+								<div class="layui-col-xs8 layui-col-md8 top-panel-number" style="color: #28333E;" id="value3">
+									0
+								</div>
+								<div class="layui-col-xs4 layui-col-md4  top-panel-tips">
+									<svg t="1686127793791" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8075" xmlns:xlink="http://www.w3.org/1999/xlink" width="200" height="200">
+										<path d="M515.968 515.712m-447.3344 0a447.3344 447.3344 0 1 0 894.6688 0 447.3344 447.3344 0 1 0-894.6688 0Z" fill="#70E7D3" p-id="8076"></path>
+									<path d="M835.0464 481.5872c0.5376-32.2304-11.52-62.336-33.9712-84.8128l-110.464-110.464-99.9424-99.9424c-47.5648-47.5392-124.928-47.5648-172.4928 0-47.5392 47.5648-47.5392 124.928 0 172.4928l137.4208 137.4208 73.0112 73.0112c21.9648 21.9648 51.2512 33.9968 82.688 33.9968 0.6912 0 1.408 0 2.1248-0.0256 32-0.5376 62.2592-13.4912 85.1968-36.4544s35.8912-53.2224 36.4288-85.2224z m-122.6752 85.0944c-23.0144 0-44.6208-8.96-60.9024-25.216l-95.3088-95.3088 121.8048-121.8048 95.3088 95.3088c16.256 16.256 25.216 37.888 25.216 60.9024 0 23.0144-8.96 44.6208-25.216 60.9024-16.2816 16.256-37.9136 25.216-60.9024 25.216zM443.52 211.712c16.7936-16.7936 38.8352-25.1904 60.9024-25.1904 22.0416 0 44.1088 8.3968 60.9024 25.1904l87.296 87.296-121.8048 121.8048-87.296-87.2704c-33.5872-33.6128-33.5872-88.2432 0-121.8304zM542.0032 533.632s-0.0256-0.0256-0.0512-0.0256l-99.9168-99.9168c-23.04-23.04-53.6576-35.7376-86.2464-35.7376-32.5888 0-63.2064 12.6976-86.2464 35.712-47.5648 47.5648-47.5648 124.928 0 172.4928l99.968 99.968 107.9808 107.9808 2.4832 2.4832c21.9648 21.9648 51.2512 33.9968 82.688 33.9968 0.6912 0 1.408 0 2.1248-0.0256 32-0.5376 62.2592-13.4912 85.1968-36.4544 22.9632-22.9632 35.8912-53.2224 36.4544-85.2224 0.5376-32.2304-11.52-62.336-33.9712-84.7872l-110.464-110.464z m-39.1424 255.1296l-95.3088-95.3088 121.8048-121.8048L624.64 666.9824c16.256 16.256 25.216 37.888 25.216 60.9024 0 23.0144-8.96 44.6208-25.216 60.9024-33.5616 33.5616-88.2176 33.5616-121.7792-0.0256zM269.696 519.936c0-23.0144 8.96-44.6208 25.216-60.9024 16.256-16.256 37.888-25.216 60.9024-25.216 23.0144 0 44.6208 8.96 60.9024 25.216l87.296 87.2704-121.8048 121.8048-87.296-87.296c-16.2816-16.256-25.216-37.888-25.216-60.8768zM822.2976 637.184c-28.8512 0-52.3008 23.4752-52.3008 52.3008s23.4752 52.3008 52.3008 52.3008 52.3008-23.4752 52.3008-52.3008-23.4752-52.3008-52.3008-52.3008z m0 68.7616c-9.088 0-16.4608-7.3728-16.4608-16.4608s7.3728-16.4608 16.4608-16.4608 16.4608 7.3728 16.4608 16.4608-7.3984 16.4608-16.4608 16.4608zM280.4992 316.6464c0-27.776-22.6048-50.3808-50.3808-50.3808s-50.3808 22.6048-50.3808 50.3808 22.6048 50.3808 50.3808 50.3808 50.3808-22.6048 50.3808-50.3808z m-64.9216 0c0-8.0128 6.528-14.5408 14.5408-14.5408s14.5408 6.528 14.5408 14.5408-6.528 14.5408-14.5408 14.5408-14.5408-6.528-14.5408-14.5408zM267.264 688.6144c-27.5456 0-49.9712 22.4256-49.9712 49.9712s22.4256 49.9712 49.9712 49.9712 49.9712-22.4256 49.9712-49.9712-22.4256-49.9712-49.9712-49.9712z m0 64.1024c-7.7824 0-14.1312-6.3488-14.1312-14.1312s6.3488-14.1312 14.1312-14.1312c7.7824 0 14.1312 6.3488 14.1312 14.1312s-6.3488 14.1312-14.1312 14.1312z" fill="#F7F8F8" p-id="8077"></path>
+									<path d="M701.8752 378.496a17.91488 17.91488 0 0 0-25.344-0.128 17.91488 17.91488 0 0 0-0.128 25.344l52.9664 53.5552a17.91232 17.91232 0 0 0 12.7488 5.3248c4.5568 0 9.1136-1.7152 12.5952-5.1712a17.91488 17.91488 0 0 0 0.128-25.344l-52.9664-53.5808zM424.1152 553.8816a17.91232 17.91232 0 0 0 12.7488 5.3248c4.5568 0 9.1136-1.7152 12.5952-5.1712a17.91488 17.91488 0 0 0 0.128-25.344l-52.9664-53.5552a17.91488 17.91488 0 0 0-25.344-0.128 17.91488 17.91488 0 0 0-0.128 25.344l52.9664 53.5296z" fill="#F7F8F8" p-id="8078"></path>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-col-xs6 layui-col-md3">
+					<div class="layui-card top-panel">
+						<div class="layui-card-header">今日取药次数</div>
+						<div class="layui-card-body">
+							<div class="layui-row layui-col-space5">
+								<div class="layui-col-xs8 layui-col-md8 top-panel-number" style="color: #28333E;" id="value4">
+									0
+								</div>
+								<div class="layui-col-xs4 layui-col-md4  top-panel-tips">
+									<svg t="1686128206023" class="icon" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg" p-id="8238" width="200" height="200">
+										<path d="M592 773.28a12.16 12.16 0 0 1-12.16-12.16v-288a12.16 12.16 0 0 1 12.16-12.16h254.4a285.92 285.92 0 0 0-282.56-244h-103.68a286.08 286.08 0 0 0-286.08 286.08v447.04a56.8 56.8 0 0 0 56.8 56.8h562.08a56.8 56.8 0 0 0 56.8-56.8v-176z" fill="#58C6FE" p-id="8239"></path>
+										<path d="M816 593.92h-71.36v-72a24.8 24.8 0 0 0-49.44 0v72H624a24.8 24.8 0 1 0 0 49.44h71.68v72a24.8 24.8 0 0 0 49.44 0v-72H816a24.8 24.8 0 1 0 0-49.44zM440 189.6H576a287.04 287.04 0 0 1 55.04 5.44v-137.6A41.12 41.12 0 0 0 589.6 16H426.08a41.12 41.12 0 0 0-41.12 41.12v137.44a287.04 287.04 0 0 1 55.04-4.96z" fill="#58C6FE" p-id="8240"></path>
+										<path d="M231.04 1012.16h561.92a56.8 56.8 0 0 0 56.8-56.8V773.28H592a12.16 12.16 0 0 1-12.16-12.16V704c-152.16 3.68-185.92-68.16-236.96-93.92-61.76-31.04-100.96-48-169.6-5.6V955.2a56.8 56.8 0 0 0 57.76 56.96z" fill="#2DA8C4" p-id="8241"></path>
+										<path d="M377.12 633.12c1.44 1.44 10.56 8.48 13.76 11.2 21.12 17.28 68.64 61.92 189.76 59.84V592c-19.52 5.76-37.92 12.48-56 19.04-37.12 14.08-101.76 16.8-147.52 22.08z" fill="#1F88A0" p-id="8242"></path>
+									</svg>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="layui-row layui-col-space10">
+					<div class="layui-col-md9">
+						<div class="layui-card">
+							<div class="layui-card-header">今日统计</div>
+							<div class="layui-card-body">
+								<div class="layui-tab custom-tab layui-tab-brief" lay-filter="docDemoTabBrief">
+									<div id="echarts-records" style="background-color:#ffffff;min-height:400px;padding: 10px"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="layui-col-md3">
+						<div class="layui-card">
+							<div class="layui-card-header">动 态</div>
+							<div class="layui-card-body">
+								<ul class="list">
+									<li class="list-item"><span class="title">新增医生章中钧</span><span class="footer">2023-05-28 10:34</span></li>
+									<li class="list-item"><span class="title">修改科室血液科</span><span class="footer">2023-06-04 21:26</span></li>
+									<li class="list-item"><span class="title">新增厂商哈药</span><span class="footer">2023-06-04 22:45</span></li>
+									<li class="list-item"><span class="title">新增取药执行人</span><span class="footer">2023-06-06 10:18</span></li>
+									<li class="list-item"><span class="title">新增过敏物花生</span><span class="footer">2023-06-06 11:32</span></li>
+									<li class="list-item"><span class="title">新增患者付晓宇</span><span class="footer">2023-06-06 11:36</span></li>
+									<li class="list-item"><span class="title">删除李医生取药信息</span><span class="footer">2023-06-06 13:52</span></li>
+									<li class="list-item"><span class="title">修改凌医生手机号</span><span class="footer">2023-06-06 14:56</span></li>
+									<li class="list-item"><span class="title">新增预约信息一条</span><span class="footer">2023-06-07 13:28</span></li>
+								</ul>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script src="../../component/layui/layui.js"></script>
+		<script src="../../component/pear/pear.js"></script>
+		<script>
+			layui.use(['layer', 'echarts', 'element', 'count','topBar'], function() {
+				var $ = layui.jquery,
+					layer = layui.layer,
+					element = layui.element,
+					count = layui.count,
+					echarts = layui.echarts;
+
+				count.up("value1", {
+					time: 4000,
+					num: 440.00,
+					bit: 2,
+					regulator: 50
+				})
+
+				count.up("value2", {
+					time: 4000,
+					num: 236,
+					bit: 2,
+					regulator: 50
+				})
+
+				count.up("value3", {
+					time: 4000,
+					num: 634.00,
+					bit: 2,
+					regulator: 50
+				})
+
+				count.up("value4", {
+					time: 4000,
+					bit: 2,
+					num: 373.00,
+					regulator: 50
+				})
+
+				var echartsRecords = echarts.init(document.getElementById('echarts-records'), 'walden');
+
+				var option = {
+					tooltip: {
+						trigger: 'axis'
+					},
+					xAxis: [{
+						type: 'category',
+						data: ['7:00', '10:00', '13:00', '16:00', '19:00', '22:00'],
+						axisLine: {
+							lineStyle: {
+								color: "#999"
+							}
+						}
+					}],
+					yAxis: [{
+						type: 'value',
+						splitNumber: 4,
+						splitLine: {
+							lineStyle: {
+								type: 'dashed',
+								color: '#DDD'
+							}
+						},
+						axisLine: {
+							show: false,
+							lineStyle: {
+								color: "#333"
+							},
+						},
+						nameTextStyle: {
+							color: "#999"
+						},
+						splitArea: {
+							show: false
+						}
+					}],
+					series: [{
+						name: '工作量',
+						type: 'line',
+						data: [40, 80, 65, 75, 35, 23],
+						lineStyle: {
+							normal: {
+								width: 8,
+								color: {
+									type: 'linear',
+
+									colorStops: [{
+										offset: 0,
+										color: '#A9F387' // 0% 处的颜色
+									}, {
+										offset: 1,
+										color: '#48D8BF' // 100% 处的颜色
+									}],
+									globalCoord: false // 缺省为 false
+								},
+								shadowColor: 'rgba(72,216,191, 0.3)',
+								shadowBlur: 10,
+								shadowOffsetY: 20
+							}
+						},
+						itemStyle: {
+							normal: {
+								color: '#fff',
+								borderWidth: 10,
+								/*shadowColor: 'rgba(72,216,191, 0.3)',
+								shadowBlur: 100,*/
+								borderColor: "#A9F387"
+							}
+						},
+						smooth: true
+					}]
+				};
+				echartsRecords.setOption(option);
+
+				window.onresize = function() {
+					echartsRecords.resize();
+				}
+
+			});
+		</script>
+	</body>
+</html>

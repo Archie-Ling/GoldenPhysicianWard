@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>患者管理</title>
+		<link href="../../component/pear/css/pear.css" rel="stylesheet" />
+		<!-- logo -->
+		<link rel="icon" href="admin/images/logo.ico" type="image/x-icon">
+		<!-- logo 兼容处理 -->
+		<link rel="shortcut icon" href="admin/images/logo.ico" type="image/x-icon">
+	</head>
+	<body class="pear-container">
+
+	<div class="layui-card">
+		<div class="layui-card-body">
+			<form class="layui-form" action="">
+				<div class="layui-form-item">
+					<div class="layui-form-item layui-inline">
+						<label class="layui-form-label">名字</label>
+						<div class="layui-input-inline">
+							<input type="text" name="search" placeholder="" class="layui-input">
+						</div>
+					</div>
+
+					<div class="layui-form-item layui-inline">
+						<button class="pear-btn pear-btn-md pear-btn-primary" lay-submit lay-filter="user-query">
+							<i class="layui-icon layui-icon-search"></i>
+							查询
+						</button>
+						<button type="reset" class="pear-btn pear-btn-md">
+							<i class="layui-icon layui-icon-refresh"></i>
+							重置
+						</button>
+					</div>
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+	<div class="layui-card">
+			<div class="layui-card-body">
+				<table id="role-table" lay-filter="role-table"></table>
+			</div>
+		</div>
+		
+		<script type="text/html" id="role-toolbar">
+			<button class="pear-btn pear-btn-primary pear-btn-md" lay-event="add">
+				<i class="layui-icon layui-icon-add-1"></i>
+				新增
+			</button>
+			<button class="pear-btn pear-btn-danger pear-btn-md" lay-event="batchRemove">
+				<i class="layui-icon layui-icon-delete"></i>
+				删除
+			</button>
+		</script>
+		
+		<script type="text/html" id="role-bar">
+			<button class="pear-btn pear-btn-primary pear-btn-sm" lay-event="edit"><i class="layui-icon layui-icon-edit"></i></button>
+			<button class="pear-btn pear-btn-danger pear-btn-sm" lay-event="remove"><i class="layui-icon layui-icon-delete"></i></button>
+		</script>
+		
+		<script type="text/html" id="role-enable">
+			<input type="checkbox" name="enable" value="{{d.id}}" lay-skin="switch" lay-text="上架|下架" lay-filter="user-enable" checked = "{{ d.id == 10003 ? 'true' : 'false' }}">
+		</script>
+
+		<script src="../../component/layui/layui.js"></script>
+		<script src="../../component/pear/pear.js"></script>
+		<script>
+		    layui.use(['table','form','jquery'],function () {
+		        let table = layui.table;
+		        let form = layui.form;
+		        let $ = layui.jquery;
+		
+		        let MODULE_PATH = "./user/";
+		
+		        let cols = [
+		            [
+		                {type:'checkbox'},
+                        {title: '名字', field: 'name', align:'center'},
+		                {title: '性别', field: 'gender', align:'center'},
+						{title: '年龄', field: 'age', align:'center'},
+		                {title: '电话', field: 'phone', align:'center'},
+						{title: '身份证', field: 'idcard', align:'center'},
+		                {title: '过敏史', field: 'allergyId', align:'center'},
+						{title: '头像', field: 'image', align:'center',
+						templet: function(d) {
+								var url =d.image;
+								return '<a href="' + url + '" target="_blank " title="点击查看">' +
+										'<img src="' + url + '" style="height:30px;" />' +
+										'</a>';
+							}
+					},
+		                {title: '操作', toolbar: '#role-bar', align:'center', width:195}
+		            ]
+		        ]
+		
+		        table.render({
+		            elem: '#role-table',
+		            url: 'http://localhost:8080/user/list',
+		            page: true ,
+		            cols: cols ,
+		            skin: 'line',
+		            toolbar: '#role-toolbar',
+		            defaultToolbar: [{
+		                layEvent: 'refresh',
+		                icon: 'layui-icon-refresh',
+		            }, 'filter', 'print', 'exports']
+		        });
+		
+		        table.on('tool(role-table)', function(obj){
+		            if(obj.event === 'remove'){
+		                window.remove(obj);
+		            } else if(obj.event === 'edit'){
+		                window.edit(obj);
+		            } else if(obj.event === 'power'){
+		                window.power(obj);
+		            }
+		        });
+		
+		        table.on('toolbar(role-table)', function(obj){
+		            if(obj.event === 'add'){
+		                window.add();
+		            } else if(obj.event === 'refresh'){
+		                window.refresh();
+		            } else if(obj.event === 'batchRemove'){
+		                window.batchRemove(obj);
+		            }
+		        });
+		
+		        form.on('submit(user-query)', function(data){
+		            table.reload('role-table',{where:data.field})
+		            return false;
+		        });
+		
+		        form.on('switch(role-enable)', function(obj){
+		            layer.tips(this.value + ' ' + this.name + '：'+ obj.elem.checked, obj.othis);
+		        });
+		
+		        window.add = function(){
+		            layer.open({
+		                type: 2,
+		                title: '新增',
+		                shade: 0.1,
+                        maxmin: true,
+		                area: ['650px', '500px'],
+		                content: MODULE_PATH + 'add.html'
+		            });
+		        }
+		
+
+		        window.edit = function(obj){
+		            layer.open({
+		                type: 2,
+		                title: '修改',
+		                shade: 0.1,
+		                area: ['650px', '500px'],
+                        content: MODULE_PATH +'edit.html?id='+obj.data.id
+		            });
+		        }
+		
+		        window.remove = function(obj){
+		            layer.confirm('确定要删除吗?', {icon: 3, title:'提示'}, function(index){
+		                layer.close(index);
+		                let loading = layer.load();
+		                $.ajax({
+		                    url: "http://localhost:8080/user/delete",
+							data:{
+		                        id:obj.data['id']
+							},
+		                    success:function(result){
+		                        layer.close(loading);
+		                        if(result.code==0){
+		                            layer.msg(result.msg,{icon:1,time:1000},function(){
+		                                obj.del();
+		                            });
+		                        }else{
+		                            layer.msg(result.msg,{icon:2,time:1000});
+		                        }
+		                    }
+		                })
+		            });
+		        }
+		
+		        window.batchRemove = function(obj){
+		            let data = table.checkStatus(obj.config.id).data;
+		            if(data.length === 0){
+		                layer.msg("未选中数据",{icon:3,time:1000});
+		                return false;
+		            }
+		            let ids = "";
+		            for(let i = 0;i<data.length;i++){
+		                ids += data[i].userId+",";
+		            }
+		            ids = ids.substr(0,ids.length-1);
+		            layer.confirm('确定要删除', {icon: 3, title:'提示'}, function(index){
+		                layer.close(index);
+		                let loading = layer.load();
+		                $.ajax({
+		                    url: MODULE_PATH+"batchRemove/"+ids,
+		                    dataType:'json',
+		                    type:'delete',
+		                    success:function(result){
+		                        layer.close(loading);
+		                        if(result.success){
+		                            layer.msg(result.msg,{icon:1,time:1000},function(){
+		                                table.reload('user-table');
+		                            });
+		                        }else{
+		                            layer.msg(result.msg,{icon:2,time:1000});
+		                        }
+		                    }
+		                })
+		            });
+		        }
+		
+		        window.refresh = function(){
+		            table.reload('role-table');
+		        }
+		    })
+		</script>
+	</body>
+</html>

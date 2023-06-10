@@ -1,0 +1,49 @@
+{
+	"logo": {
+		"title": "金牌医师大病房",
+		"image": "admin/images/logo.png"
+	},
+	"menu": {
+		"data": "admin/data/menu.json",
+		"accordion": true,
+		"control": false,
+		"select": "10",
+		"async": true
+	},
+	"tab": {
+		"muiltTab": true,
+		"keepState": true,
+		"tabMax": 30,
+		"index": {
+			"id": "10",
+			"href": "view/console/console1.html",
+			"title": "首页"
+		}
+	},
+	"theme": {
+		"defaultColor": "3",
+		"defaultMenu": "light-theme",
+		"color":"3",
+		"allowCustom": false
+	},
+	"colors": [{
+			"id": "1",
+			"color": "#FF5722"
+		},
+		{
+			"id": "2",
+			"color": "#5FB878"
+		},
+		{
+			"id": "3",
+			"color": "#6bbedc"
+		}, {
+			"id": "4",
+			"color": "#FFB800"
+		}
+	],
+	
+	"other": {
+		"keepLoad": 1200
+	}
+}
